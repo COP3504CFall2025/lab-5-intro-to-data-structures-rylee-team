@@ -4,16 +4,6 @@
 #include <stdexcept>
 #include "Interfaces.hpp"
 
-/*
-template <typename T>
-class StackInterface {
-	virtual void push(const T& item) = 0;
-	virtual T pop() = 0;
-	virtual T peek() const = 0;
-	virtual std::size_t getSize() const noexcept = 0;
-};
-*/
-
 // Technically bad, but size_t isn't likely to conflict with any client code.
 using std::size_t;
 
@@ -116,17 +106,19 @@ public:
 		size++;
 	}
 
-    T peek() const override{
+    T peek() const override {
 		if (size > 0){
 			return array[size-1];
 		}
-		
 	}
 
     T pop() override{
 		if (size > 0){
 			size--;
 			return array[size];
+		}
+		else{
+			throw std::out_of_range("Empty stack");
 		}
 	}
 
