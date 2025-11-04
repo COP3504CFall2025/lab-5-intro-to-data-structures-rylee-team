@@ -19,7 +19,22 @@
 */
 
 int main() {
+	LinkedList test = LinkedList<int>();
+	test.addHead(5);
+	test.addHead(3);
+	test.addTail(8);
+	
+	LinkedList test2 = test;
 
+	LinkedList test3 = LinkedList<int>();
+	test3.addHead(49);
+	test3 = test;
+
+	test.printForward();
+	std::cout << std::endl;
+	test2.printForward();
+	std::cout << std::endl;
+	test3.printForward();
 
     return 0;
 }
