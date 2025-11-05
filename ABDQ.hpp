@@ -174,7 +174,7 @@ public:
 		else{
 			back_ = (capacity + back_ - 1) % capacity;
 			size--;
-			T elem = array[index]l
+			T elem = array[back_];
 			shrinkIfNeeded();
 			return elem;
 		}
