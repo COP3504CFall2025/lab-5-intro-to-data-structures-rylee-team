@@ -155,7 +155,7 @@ public:
     // Deletion
     T popFront() override{
 		if (size == 0){
-			throw std::out_of_range("Empty dequeue");
+			throw std::runtime_error("Empty dequeue");
 		}
 		else {
 			std::size_t index = front_;
@@ -167,7 +167,7 @@ public:
 
     T popBack() override{
 		if (size == 0){
-			throw std::out_of_range("Empty dequeue");
+			throw std::runtime_error("Empty dequeue");
 		}
 		else{
 			back_ = (capacity + back_ - 1) % capacity;

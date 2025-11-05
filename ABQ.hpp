@@ -93,13 +93,13 @@ public:
     // Insertion
     void enqueue(const T& data) override{
 		if (size == capacity){
-			capacity *= scale_factor;
+			capacity *= scale_factor_;
 			T* temp = new T[capacity];
-			temp[size] = data;
+			
 			for (size_t i = 0; i < size; i++){
 				temp[i] = array[i];
 			}
-
+			temp[size] = data;
 			delete[] array;
 			array = temp;
 		}
@@ -119,9 +119,9 @@ public:
 		if (size > 0) {
 		T elem = array[0];
 		
-		T* temp = new array[capacity];
+		T* temp = new T[capacity];
 		for (size_t i = 0; i < size-1; i++) {
-			temp[i] = array[i+1]
+			temp[i] = array[i+1];
 		}
 
 		delete[] array;

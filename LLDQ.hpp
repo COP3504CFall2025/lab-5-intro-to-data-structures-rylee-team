@@ -27,14 +27,25 @@ public:
 
     // Core Removal Operations
     T popFront() override{
-		T element = list.getHead()->getData();
-		list.RemoveHead();
-		return element;
+		if (list.getCount() != 0){
+			T element = list.getHead()->getData();
+			list.RemoveHead();
+			return element;
+		}
+		else {
+			throw std::runtime_error("Empty dequeue");
+		}
+		
 	}
     T popBack() override{
-		T element = list.getTail()->getData();
-		list.RemoveTail();
-		return element;
+		if (list.getCount() != 0){
+			T element = list.getTail()->getData();
+			list.RemoveTail();
+			return element;
+		}
+		else {
+			throw std::runtime_error("Empty dequeue");
+		}
 	}
 
     // Element Accessors

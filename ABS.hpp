@@ -110,6 +110,9 @@ public:
 		if (size > 0){
 			return array[size-1];
 		}
+		else {
+			throw std::runtime_error("Empty stack");
+		}
 	}
 
     T pop() override{
@@ -118,7 +121,7 @@ public:
 			return array[size];
 		}
 		else{
-			throw std::out_of_range("Empty stack");
+			throw std::runtime_error("Empty stack");
 		}
 	}
 
