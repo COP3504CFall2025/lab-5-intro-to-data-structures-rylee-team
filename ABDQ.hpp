@@ -161,8 +161,9 @@ public:
 			std::size_t index = front_;
 			front_ = (front_ + 1) % capacity;
 			size--;
+			T elem = array[index];
 			shrinkIfNeeded();
-			return array[index];
+			return elem;
 		}
 	}
 
@@ -173,8 +174,9 @@ public:
 		else{
 			back_ = (capacity + back_ - 1) % capacity;
 			size--;
+			T elem = array[index]l
 			shrinkIfNeeded();
-			return array[back_];
+			return elem;
 		}
 	}
 
@@ -212,6 +214,9 @@ public:
 		if (size > 0 && size <= capacity/4){
 			std::size_t old_capacity = capacity;
 			capacity /= 2;
+			if (capacity < 1){
+				capacity = 1;
+			}
 			T* temp = new T[capacity];
 			std::size_t index;
 
