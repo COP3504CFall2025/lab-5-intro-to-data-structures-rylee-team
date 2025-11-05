@@ -36,7 +36,7 @@ public:
 		}
 	}
 
-	void printReverse() const{
+	void PrintReverse() const{
 		Node* ptr = tail;
 		for (int i = 0; i < count; i++){
 			std::cout << ptr->data << std::endl;
@@ -71,7 +71,7 @@ public:
 	}
 
 	// Insertion
-	void addHead(const T& data){
+	void AddHead(const T& data){
 		// create the new node
 		Node* newNode = new Node(data, nullptr, head);
 
@@ -92,7 +92,7 @@ public:
 		count++;
 	}
 
-	void addTail(const T& data){
+	void AddTail(const T& data){
 				// create the new node
 		Node* newNode = new Node(data, tail, nullptr);
 
@@ -114,7 +114,7 @@ public:
 	}
 
 	// Removal
-	bool removeHead(){
+	bool RemoveHead(){
 		if (count > 0){
 			Node* temp = head;
 			if (count == 1){
@@ -138,7 +138,7 @@ public:
 		}
 	}
 
-	bool removeTail(){
+	bool RemoveTail(){
 		if (count > 0){
 			Node* temp = tail;
 			if (count == 1){
@@ -164,7 +164,7 @@ public:
 
 	void Clear(){
 		while (count > 0){
-			removeHead();
+			RemoveHead();
 		}
 	}
 
@@ -184,7 +184,7 @@ public:
 
 		Node* ptr = list.head;
 		for (int i = 0; i < list.count; i++){
-			addTail(ptr->data);
+			AddTail(ptr->data);
 			ptr = ptr->next;
 			}
 		}
@@ -203,7 +203,7 @@ public:
 			else {
 			Node* ptr = rhs.head;
 			for (int i = 0; i < rhs.count; i++){
-				addTail(ptr->data);	
+				AddTail(ptr->data);	
 				ptr = ptr->next;
 				}
 			}

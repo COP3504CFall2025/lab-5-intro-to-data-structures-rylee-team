@@ -15,13 +15,13 @@ public:
 
     // Insertion
     void enqueue(const T& item) override{
-		list.addTail(item);
+		list.AddTail(item);
 	}
 
     // Deletion
     T dequeue() override{
 		T element = list.getHead()->getData();
-		list.removeHead();
+		list.RemoveHead();
 		return element;
 	}
 
