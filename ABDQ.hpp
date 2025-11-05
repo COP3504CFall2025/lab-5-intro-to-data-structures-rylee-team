@@ -12,7 +12,7 @@ private:
     std::size_t capacity;    // total allocated capacity
     std::size_t size;        // number of stored elements
     std::size_t front_;       // index of front element
-    std::size_t back;        // index after the last element (circular)
+    std::size_t back_;        // index after the last element (circular)
 
     static constexpr std::size_t SCALE_FACTOR = 2;
 
@@ -23,20 +23,20 @@ public:
 		size = 0;
 		array = new T[4];
 		front_ = 0;
-		back = 0;
+		back_ = 0;
 	}
     explicit ABDQ(std::size_t c){
 		capacity = c;
 		size = 0;
 		array = new T[c];
 		front_ = 0;
-		back = 0;
+		back_ = 0;
 	}
     ABDQ(const ABDQ& other){
 		capacity = other.capacity;
 		size = other.size;
 		front_ = other.front_;
-		back = other.back;
+		back_ = other.back_;
 
 		array = new T[other.capacity];
 
@@ -50,14 +50,14 @@ public:
 		capacity = other.capacity;
 		size = other.size;
 		front_ = other.front_;
-		back = other.back;
+		back_ = other.back_;
 		array = other.array;
 
 		other.array = nullptr;
 		other.capacity = 0;
 		other.size = 0;
 		other.front_ = 0;
-		other.back = 0;
+		other.back_ = 0;
 	}
     ABDQ& operator=(const ABDQ& other){
 		if (this != &other){
@@ -66,7 +66,7 @@ public:
 
 			size = other.size;
 			front_ = other.front_;
-			back = other.back;
+			back_ = other.back_;
 			capacity = other.capacity;
 			array = new T[capacity];
 			
@@ -86,14 +86,14 @@ public:
 			capacity = other.capacity;
 			size = other.size;
 			front_ = other.front_;
-			back = other.back;
+			back_ = other.back_;
 			array = other.array;
 
 			other.array = nullptr;
 			other.size = 0;
 			other.capacity = 0;
 			other.front_ = 0;
-			other.back = 0;
+			other.back_ = 0;
 		}
 		return *this;
 	}
@@ -119,7 +119,7 @@ public:
 			array = temp;
 			temp = nullptr;
 			front_ = 0;
-			back = size;
+			back_ = size;
 		}
 		
 		front_ = (front_ - 1 + capacity) % capacity;
@@ -143,11 +143,11 @@ public:
 			array = temp;
 			temp = nullptr;
 			front_ = 0;
-			back = size;
+			back_ = size;
 		}
 		
-		array[back] = item;
-		back = (back + 1) % capacity;
+		array[back_] = item;
+		back_ = (back_ + 1) % capacity;
 		size++;
 		
 	}
@@ -170,9 +170,9 @@ public:
 			throw std::out_of_range("Empty dequeue");
 		}
 		else{
-			back = (capacity + back - 1) % capacity;
+			back_ = (capacity + back_ - 1) % capacity;
 			size--;
-			return array[back];
+			return array[back_];
 		}
 	}
 
@@ -181,7 +181,7 @@ public:
 		return array[front_];
 	}
     const T& back() const override{
-		std::size_t index = (capacity + back - 1) % capacity;
+		std::size_t index = (capacity + back_ - 1) % capacity;
 		return array[index];
 	}
 

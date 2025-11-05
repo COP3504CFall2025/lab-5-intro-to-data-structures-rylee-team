@@ -4,10 +4,11 @@
 template <typename T>
 class LinkedList {
 	struct Node {
+	private:
 		T data;
 		Node* prev;
 		Node* next;
-
+	public:
 		Node(){
 			prev = nullptr;
 			next = nullptr;
@@ -17,6 +18,10 @@ class LinkedList {
 			data = d;
 			prev = previous;
 			next = n;
+		}
+
+		T getData(){
+			return data;
 		}
 	};
 
@@ -59,6 +64,10 @@ public:
 
 	const Node* getTail() const{
 		return tail;
+	}
+
+	T getData(){
+		return 
 	}
 
 	// Insertion
