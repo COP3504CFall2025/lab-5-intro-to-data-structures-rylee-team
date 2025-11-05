@@ -161,6 +161,7 @@ public:
 			std::size_t index = front_;
 			front_ = (front_ + 1) % capacity;
 			size--;
+			shrinkIfNeeded();
 			return array[index];
 		}
 	}
@@ -172,6 +173,7 @@ public:
 		else{
 			back_ = (capacity + back_ - 1) % capacity;
 			size--;
+			shrinkIfNeeded();
 			return array[back_];
 		}
 	}
