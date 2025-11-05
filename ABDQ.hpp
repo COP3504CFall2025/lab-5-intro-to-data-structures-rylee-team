@@ -42,7 +42,7 @@ public:
 
 		std::size_t index;
 		for (size_t i = 0; i < size; i++){
-			index = (other.front + i) % other.capacity;
+			index = (other.front_ + i) % other.capacity;
 			array[i] = other.array[index];
 		}
 	}
@@ -72,7 +72,7 @@ public:
 			
 			std::size_t index;
 			for (size_t i = 0; i < size; i++){
-				index = (other.front + i) % other.capacity;
+				index = (other.front_ + i) % other.capacity;
 				array[i] = other.array[index];
 			}
 		}

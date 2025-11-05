@@ -4,11 +4,10 @@
 template <typename T>
 class LinkedList {
 	struct Node {
-	private:
 		T data;
 		Node* prev;
 		Node* next;
-	public:
+		
 		Node(){
 			prev = nullptr;
 			next = nullptr;
