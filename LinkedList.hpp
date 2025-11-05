@@ -7,7 +7,7 @@ class LinkedList {
 		T data;
 		Node* prev;
 		Node* next;
-		
+
 		Node(){
 			prev = nullptr;
 			next = nullptr;
@@ -19,7 +19,11 @@ class LinkedList {
 			next = n;
 		}
 
-		T getData(){
+		T& getData(){
+			return data;
+		}
+
+		const T& getData() const{
 			return data;
 		}
 	};
@@ -29,7 +33,7 @@ public:
 	void printForward() const{
 		Node* ptr = head;
 		
-		for (int i = 0; i < count; i++){
+		for (std::size_t i = 0; i < count; i++){
 			std::cout << ptr->data << std::endl;
 			ptr = ptr->next;
 		}
@@ -37,7 +41,7 @@ public:
 
 	void PrintReverse() const{
 		Node* ptr = tail;
-		for (int i = 0; i < count; i++){
+		for (std::size_t i = 0; i < count; i++){
 			std::cout << ptr->data << std::endl;
 			ptr = ptr->prev;
 			
@@ -63,10 +67,6 @@ public:
 
 	const Node* getTail() const{
 		return tail;
-	}
-
-	T getData(){
-		return 
 	}
 
 	// Insertion
@@ -182,7 +182,7 @@ public:
 		this->tail = nullptr;
 
 		Node* ptr = list.head;
-		for (int i = 0; i < list.count; i++){
+		for (std::size_t i = 0; i < list.count; i++){
 			AddTail(ptr->data);
 			ptr = ptr->next;
 			}
@@ -201,7 +201,7 @@ public:
 
 			else {
 			Node* ptr = rhs.head;
-			for (int i = 0; i < rhs.count; i++){
+			for (std::size_t i = 0; i < rhs.count; i++){
 				AddTail(ptr->data);	
 				ptr = ptr->next;
 				}

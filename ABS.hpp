@@ -93,7 +93,7 @@ public:
 			capacity *= scale_factor;
 			T* temp = new T[capacity];
 			temp[size] = data;
-			for (size_t = 0; i < size; i++){
+			for (size_t i = 0; i < size; i++){
 				temp[i] = array[i];
 			}
 
