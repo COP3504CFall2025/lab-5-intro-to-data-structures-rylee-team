@@ -110,13 +110,12 @@ public:
 			for (size_t i = 0; i < size; i++){
 				temp[i] = array[i];
 			}
-			temp[size] = data;
+
 			delete[] array;
 			array = temp;
 		}
-		else {
-			array[size] = data;
-		}
+		
+		array[size] = data;
 		size++;
 	}
 
