@@ -75,6 +75,9 @@ public:
 	void shrinkIfNeeded(){
 		if (size > 0 && size <= capacity/4){
 			capacity /= 2;
+			if (capacity < 1){
+				capacity = 1;
+			}
 
 			T* temp = new T[capacity];
 			for (size_t i = 0; i < size; i++){
@@ -130,9 +133,10 @@ public:
 
     T pop() override{
 		if (size > 0){
+			T value = array[size-1];
 			size--;
 			shrinkIfNeeded();
-			return array[size];
+			return value;
 		}
 		else{
 			throw std::runtime_error("Empty stack");
