@@ -120,20 +120,26 @@ public:
 	}
 
 	void shrinkIfNeeded(){
-		if (size > 0 && size <= capacity/4){
+		if (size == 0 && capacity > 1){
+			capacity = 1;
+		}
+		else if (size > 0 && size <= capacity/4){
 			capacity /= 2;
 			if (capacity < 1){
 				capacity = 1;
 			}
-
-			T* temp = new T[capacity];
-			for (size_t i = 0; i < size; i++){
-				temp[i] = array[i];
-			}
-			delete[] array;
-			array = temp;
-			temp = nullptr;
 		}
+		else{
+			return;
+		}
+
+		T* temp = new T[capacity];
+		for (size_t i = 0; i < size; i++){
+			temp[i] = array[i];
+		}
+		delete[] array;
+		array = temp;
+		temp = nullptr;
 	}
 
     // Deletion

@@ -210,8 +210,12 @@ public:
 		capacity *= SCALE_FACTOR;
 	}
 
+
 	void shrinkIfNeeded(){
-		if (size > 0 && size <= capacity/4){
+		if (size == 0 && capacity > 1){
+			capacity = 1;
+		}
+		else if (size > 0 && size <= capacity/4){
 			std::size_t old_capacity = capacity;
 			capacity /= 2;
 			if (capacity < 1){
@@ -231,7 +235,9 @@ public:
 			temp = nullptr;
 			front_ = 0;
 			back_ = size;
-
+		}
+		else{
+			return;
 		}
 	}
 };
