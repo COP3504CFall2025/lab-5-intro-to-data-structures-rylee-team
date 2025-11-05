@@ -162,7 +162,7 @@ public:
 		return elem;
 		}
 		else {
-			throw std::out_of_range("Empty queue");
+			throw std::runtime_error("Empty queue");
 		}
 	}
 };
