@@ -119,6 +119,20 @@ public:
 		}
 	}
 
+	void shrinkIfNeeded(){
+		if (size > 0 && size <= capacity/4){
+			capacity /= 2;
+
+			T* temp = new T[capacity];
+			for (size_t i = 0; i < size; i++){
+				temp[i] = array[i];
+			}
+			delete[] array;
+			array = temp;
+			temp = nullptr;
+		}
+	}
+
     // Deletion
     T dequeue() override{
 		if (size > 0) {
@@ -135,6 +149,7 @@ public:
 		temp = nullptr;
 		size--;
 
+		shrinkIfNeeded();
 		return elem;
 		}
 		else {

@@ -20,6 +20,9 @@ public:
 
     // Deletion
     T pop() override{
+		if (list.getCount() == 0){
+			throw std::runtime_error("List is empty")
+		}
 		T element = list.getHead()->getData();
 		list.RemoveHead();
 		return element;

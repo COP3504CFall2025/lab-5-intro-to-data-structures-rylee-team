@@ -207,8 +207,24 @@ public:
 	}
 
 	void shrinkIfNeeded(){
-		if (size <= capacity/4){
-			capacity /= SCALE_FACTOR;
+		if (size > 0 && size <= capacity/4){
+			std::size_t old_capacity = capacity;
+			capacity /= 2;
+			T* temp = new T[capacity];
+			std::size_t index;
+
+			for (std::size_t i = 0; i < size; i++){
+				index = (front_ + i) % (old_capacity);
+				temp[i] = array[index];
+			}
+
+			delete[] array;
+
+			array = temp;
+			temp = nullptr;
+			front_ = 0;
+			back_ = size;
+
 		}
 	}
 };

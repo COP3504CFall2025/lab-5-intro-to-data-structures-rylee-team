@@ -72,6 +72,20 @@ public:
 		delete[] array;
 	}
 
+	void shrinkIfNeeded(){
+		if (size > 0 && size <= capacity/4){
+			capacity /= 2;
+
+			T* temp = new T[capacity];
+			for (size_t i = 0; i < size; i++){
+				temp[i] = array[i];
+			}
+			delete[] array;
+			array = temp;
+			temp = nullptr;
+		}
+	}
+
     // Get the number of items in the ABS
     [[nodiscard]] size_t getSize() const noexcept override{
 		return size;
@@ -92,11 +106,11 @@ public:
 		if (size == capacity){
 			capacity *= scale_factor;
 			T* temp = new T[capacity];
-			temp[size] = data;
+			
 			for (size_t i = 0; i < size; i++){
 				temp[i] = array[i];
 			}
-
+			temp[size] = data;
 			delete[] array;
 			array = temp;
 		}
@@ -118,6 +132,7 @@ public:
     T pop() override{
 		if (size > 0){
 			size--;
+			shrinkIfNeeded();
 			return array[size];
 		}
 		else{

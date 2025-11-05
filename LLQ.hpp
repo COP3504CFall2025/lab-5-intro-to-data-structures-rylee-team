@@ -20,9 +20,15 @@ public:
 
     // Deletion
     T dequeue() override{
-		T element = list.getHead()->getData();
-		list.RemoveHead();
-		return element;
+		if (list.getCount() == 0){
+			throw std::runtime_error("List is empty");
+		}
+		else{
+			T element = list.getHead()->getData();
+			list.RemoveHead();
+			return element;
+		}
+		
 	}
 
     // Access
