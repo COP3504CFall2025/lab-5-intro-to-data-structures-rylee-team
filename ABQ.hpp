@@ -111,7 +111,12 @@ public:
 
     // Access
     T peek() const override{
-		return array[0];
+		if (size == 0) {
+			throw std::runtime_error("Dequeue is empty");
+		}
+		else{
+			return array[0];
+		}
 	}
 
     // Deletion

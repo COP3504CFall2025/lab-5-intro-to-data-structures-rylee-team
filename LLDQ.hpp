@@ -50,10 +50,21 @@ public:
 
     // Element Accessors
     const T& front() const override{
-		return list.getHead()->getData();
+		if (list.getCount() == 0){
+			throw std::runtime_error("Empty dequeue");
+		}
+		else{
+			return list.getHead()->getData();
+		}
+		
 	}
     const T& back() const override{
-		return list.getTail()->getData();
+		if (list.getCount == 0){
+			throw std::runtime_error("Empty dequeue");
+		}
+		else{
+			return list.getTail()->getData();
+		}
 	}
 
     // Getter

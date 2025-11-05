@@ -27,7 +27,13 @@ public:
 
     // Access
     T peek() const override{
-		return list.getHead()->getData();
+		if (list.getCount() == 0){
+			throw std::runtime_error("List is empty");
+		}
+		else{
+			return list.getHead()->getData();
+		}
+		
 	}
 
     // Getter

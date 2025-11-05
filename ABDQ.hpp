@@ -178,11 +178,23 @@ public:
 
     // Access
     const T& front() const override{
-		return array[front_];
+		if (size == 0){
+			throw std::runtime_error("Empty dequeue");
+		}
+		else {
+			return array[front_];
+		}
+		
 	}
     const T& back() const override{
-		std::size_t index = (capacity + back_ - 1) % capacity;
-		return array[index];
+		if (size == 0){
+			throw std::runtime_error("Empty dequeue");
+		}
+		else {
+			std::size_t index = (capacity + back_ - 1) % capacity;
+			return array[index];
+		}
+		
 	}
 
     // Getters
