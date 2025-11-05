@@ -105,7 +105,7 @@ public:
     void pushFront(const T& item) override{
 		if (size == capacity){
 			std::size_t old_capacity = capacity;
-			capacity *= SCALE_FACTOR;
+			ensureCapacity();
 			T* temp = new T[capacity];
 			std::size_t index;
 
@@ -129,7 +129,7 @@ public:
     void pushBack(const T& item) override{
 		if (size == capacity){
 			std::size_t old_capacity = capacity;
-			capacity *= SCALE_FACTOR;
+			ensureCapacity();
 			T* temp = new T[capacity];
 			std::size_t index;
 
@@ -190,4 +190,13 @@ public:
 		return size;
 	}
 
+	void ensureCapacity(){
+		capacity *= SCALE_FACTOR;
+	}
+
+	void shrinkIfNeeded(){
+		if (size <= capacity/4){
+			capacity /= SCALE_FACTOR;
+		}
+	}
 };
