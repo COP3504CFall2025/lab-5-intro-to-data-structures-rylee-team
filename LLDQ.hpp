@@ -59,7 +59,7 @@ public:
 		
 	}
     const T& back() const override{
-		if (list.getCount == 0){
+		if (list.getCount() == 0){
 			throw std::runtime_error("Empty dequeue");
 		}
 		else{
