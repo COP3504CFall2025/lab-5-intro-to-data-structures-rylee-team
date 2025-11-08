@@ -202,7 +202,7 @@ public:
 			else {
 			Node* ptr = rhs.head;
 			for (std::size_t i = 0; i < rhs.count; i++){
-				AddTail(ptr->data);	
+				addTail(ptr->data);	
 				ptr = ptr->next;
 				}
 			}
