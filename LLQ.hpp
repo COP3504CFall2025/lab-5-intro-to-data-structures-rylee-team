@@ -15,7 +15,7 @@ public:
 
     // Insertion
     void enqueue(const T& item) override{
-		list.AddTail(item);
+		list.addTail(item);
 	}
 
     // Deletion
@@ -25,7 +25,7 @@ public:
 		}
 		else{
 			T element = list.getHead()->getData();
-			list.RemoveHead();
+			list.removeHead();
 			return element;
 		}
 		
